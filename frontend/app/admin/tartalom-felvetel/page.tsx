@@ -43,7 +43,7 @@ export default function TartalomFelvetel() {
     formData.append("kepUrl", kepUrl);
 
     try {
-      const res = await fetch("http://localhost:5000/admin/kezelesek", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/kezelesek`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

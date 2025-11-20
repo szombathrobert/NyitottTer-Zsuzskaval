@@ -31,7 +31,7 @@ export default function NewEventPage() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/admin/events", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/events`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ title, description, date, imageUrl }),

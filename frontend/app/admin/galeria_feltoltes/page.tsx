@@ -29,7 +29,7 @@ export default function GaleriaFeltoltes() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/admin/galeria-upload", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/galeria-upload`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

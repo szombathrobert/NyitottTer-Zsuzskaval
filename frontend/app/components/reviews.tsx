@@ -17,7 +17,7 @@ export default function ReviewSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/reviews`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((err) => console.error(err))

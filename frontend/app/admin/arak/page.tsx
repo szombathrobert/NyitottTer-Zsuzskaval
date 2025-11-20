@@ -30,7 +30,7 @@ export default function AdminArak() {
   useEffect(() => {
     if (!token) return;
 
-    fetch("http://localhost:5000/admin/kezelesek", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/kezelesek`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -41,7 +41,7 @@ export default function AdminArak() {
     if (!token) return;
     setMentesId(id);
 
-    await fetch(`http://localhost:5000/admin/kezelesek/${id}/ar`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/kezelesek/${id}/ar`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

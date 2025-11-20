@@ -13,7 +13,7 @@ export default function EventsSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/events") // publikus endpoint
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`) // publikus endpoint
       .then((res) => res.json())
       .then((data) => setEvents(data))
       .finally(() => setLoading(false));

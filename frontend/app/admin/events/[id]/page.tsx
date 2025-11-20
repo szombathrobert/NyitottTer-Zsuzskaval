@@ -16,7 +16,7 @@ export default function EditEventPage() {
       return;
     }
 
-    fetch(`http://localhost:5000/admin/events/${id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/events/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -57,7 +57,7 @@ export default function EditEventPage() {
       <button
         onClick={() => {
           const token = localStorage.getItem("adminToken");
-          fetch(`http://localhost:5000/admin/events/${id}`, {
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/events/${id}`, {
             method: "PUT",
             headers: {
               Authorization: `Bearer ${token}`,

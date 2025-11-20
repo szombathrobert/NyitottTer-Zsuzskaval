@@ -36,7 +36,7 @@ export default function AdminReviewsPage() {
 
     const fetchReviews = async () => {
       try {
-        const res = await fetch("http://localhost:5000/admin/reviews", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/reviews`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -66,7 +66,7 @@ export default function AdminReviewsPage() {
     setDeleting(true);
 
     try {
-      await fetch(`http://localhost:5000/admin/reviews/${selectedId}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/reviews/${selectedId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

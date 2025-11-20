@@ -34,7 +34,7 @@ export default function AdminEventsPage() {
 
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:5000/events", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -53,7 +53,7 @@ export default function AdminEventsPage() {
     if (!deleteId || !token) return;
     setDeleting(true);
     try {
-      await fetch(`http://localhost:5000/admin/events/${deleteId}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/events/${deleteId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

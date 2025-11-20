@@ -20,7 +20,7 @@ export default function EditReviewPage() {
 
     const fetchReview = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/admin/reviews`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/reviews`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -49,7 +49,7 @@ export default function EditReviewPage() {
     if (!token || !id) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/admin/reviews/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/reviews/${id}`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ name, text, date }),

@@ -24,7 +24,7 @@ export default function KezelesPage() {
 
     const fetchKezeles = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/admin/kezelesek/slug/${slug}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/kezelesek/slug/${slug}`);
         const data = await res.json();
 
         if (data.success) {

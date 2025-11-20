@@ -29,7 +29,7 @@ export default function CloudinaryUpload() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/admin/upload-image", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/upload-image`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -17,7 +17,7 @@ export default function ArakPage() {
     // Publikus végpont token nélkül
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:5000/kezelesek");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/kezelesek`);
         if (!res.ok) throw new Error("Hálózati hiba");
         const data: Kezeles[] = await res.json();
         setKezelesek(data);

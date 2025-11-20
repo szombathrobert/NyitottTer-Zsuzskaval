@@ -62,7 +62,7 @@ export default function EditorPage() {
     const fetchKezeles = async () => {
       if (!token || !id || !editor) return;
       try {
-        const res = await fetch(`http://localhost:5000/admin/kezelesek/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/kezelesek/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -88,7 +88,7 @@ export default function EditorPage() {
   const handleSave = async () => {
     if (!token || !id || !editor) return;
     try {
-      const res = await fetch(`http://localhost:5000/admin/kezelesek/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/kezelesek/${id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

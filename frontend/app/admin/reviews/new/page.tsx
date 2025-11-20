@@ -32,7 +32,7 @@ export default function NewReviewPage() {
               e.preventDefault();
               setLoadingSubmit(true);
               try {
-                const res = await fetch("http://localhost:5000/admin/reviews", {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/reviews`, {
                   method: "POST",
                   headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
                   body: JSON.stringify({ name, text, date }),

@@ -27,7 +27,7 @@ export default function AdminGaleria() {
   const loadKepek = async () => {
     if (!token) return;
     try {
-      const res = await fetch("http://localhost:5000/admin/galeria", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/galeria`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -57,7 +57,7 @@ export default function AdminGaleria() {
     setDeleting(selectedId);
 
     try {
-      await fetch(`http://localhost:5000/admin/galeria/${selectedId}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/galeria/${selectedId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
