@@ -1,0 +1,60 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Kezeles {
+  id          Int      @id @default(autoincrement())
+  cim         String
+  slug        String   @unique
+  tartalom    String
+  ar          String?
+  kepUrl      String?
+  shortDescription String?
+  letrehozva  DateTime @default(now())
+  modositva   DateTime @updatedAt
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  name      String
+  text      String
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  date        DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String   // bcrypt hash formában tárolva
+  createdAt DateTime @default(now())
+}
+
+model Galeria {
+  id          Int       @id @default(autoincrement())
+  url         String
+  publicId    String?
+  createdAt   DateTime  @default(now())
+}
+
+model Kep {
+  id          Int      @id @default(autoincrement())
+  url         String
+  cim         String?
+  letrehozva  DateTime @default(now())
+}
